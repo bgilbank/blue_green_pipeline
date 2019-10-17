@@ -24,7 +24,6 @@ pipeline {
         }
         stage('Set kubectl context') {
             kubectl config use-context arn:aws:eks:us-west-2:cluster/cloudcapstonecluster
-            You have to create the cluster first and get the arn
         }
         stage('Deploy Blue Container') {
           kubectl apply -f ./blue_controller.json
