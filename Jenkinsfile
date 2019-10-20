@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Set kubectl context') {
           steps {
-            sh 'kubectl config use-context arn:aws:eks:us-west-2:cluster/cloudcapstonecluster' // fix
+            sh 'kubectl config use-context arn:aws:eks:us-west-2:430555665756:cluster/cloudcapstone'
           }
         }
         stage('Deploy Blue Container') {
