@@ -17,7 +17,7 @@ pipeline {
           }
         }
         stage('Push image to Dockerhub') {
-          steps { 
+          steps {
           sh '''
             dockerpath="bgilbank/cloudcapstone"
             docker login -u bgilbank
@@ -44,12 +44,12 @@ pipeline {
         stage('Create A Service and redirect traffic to Blue Container') {
           steps {
             sh 'kubectl apply -f ./blue_green_service.json'
-          }  
+          }
         }
         stage('Wait for user input') {
            steps {
                 input "Does the staging environment look ok?"
-           } 
+           }
         }
         stage('Update the service to redirect traffic to Green Container') {
           steps {
