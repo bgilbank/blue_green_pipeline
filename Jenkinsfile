@@ -9,21 +9,21 @@ pipeline {
         }
         stage('Build local Docker Image') {
           steps {
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '75b4bc4a-52c3-4647-9cd7-2b50d6f368dc', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
             sh '''
-            docker build -t bgilbank/cloudcapstone:$BUILD_ID .
+             docker build -t bgilbank/cloudcapstone:$BUILD_ID .
             '''
             }
           }
         }
         stage('Push image to Dockerhub') {
           steps {
-          sh '''
-            dockerpath="bgilbank/cloudcapstone"
-            docker login -u bgilbank
-            docker tag cloudcapstone bgilbank/cloudcapstone:v1
-            docker push bgilbank/cloudcapstone:v1
-          '''
+            sh '''
+              dockerpath="bgilbank/cloudcapstone"
+              docker login -u bgilbank
+              docker tag cloudcapstone bgilbank/cloudcapstone:v1
+              docker push bgilbank/cloudcapstone:v1
+            '''
           }
         }
         stage('Set kubectl context') {
