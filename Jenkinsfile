@@ -11,7 +11,7 @@ pipeline {
           steps {
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '75b4bc4a-52c3-4647-9cd7-2b50d6f368dc', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
             sh '''
-             docker build -t bgilbank/cloudcapstone .
+             docker build --tag=cloudcapstone .
             '''
             }
           }
